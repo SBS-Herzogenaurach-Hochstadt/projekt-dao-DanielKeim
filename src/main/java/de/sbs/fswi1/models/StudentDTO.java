@@ -13,4 +13,10 @@ public class StudentDTO extends Mensch {
     public String getKlasse() {
         return klasse;
     }
+
+    @Override
+    public String toString() {
+        return "StudentDTO [vorname=" + vorname + ", nachname=" + nachname + ", klasse=" + klasse + ", geburtsdatum="
+                + geburtsdatum + "]";
+    }
 }

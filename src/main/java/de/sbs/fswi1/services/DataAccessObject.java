@@ -10,8 +10,7 @@ import de.sbs.fswi1.models.StudentDTO;
 
 public class DataAccessObject {
 
-    // C:/Users/cgg/Documents/data
-    private String pathAsString;
+    private final String pathAsString;
 
     public DataAccessObject(String pathAsString) {
         this.pathAsString = pathAsString;
@@ -32,32 +31,26 @@ public class DataAccessObject {
                 // ALLES als Zeichenfolge einlesen
                 String csvContent = Files.readString(pfadAufCSV);
 
-                // Zeichenfolge am Zeilenumbruchzeichen "\n" zerlegen
-                // und als Array zurückgeben
+                // Zeichenfolge am Zeilenumbruchzeichen "\n" zerlegen und als Array zurückgeben
                 String[] lines = csvContent.split("\n");
 
                 // leere List instanziieren, um in und nach if Zugriff darauf zu haben
                 List<StudentDTO> studenten = new ArrayList<>();
 
-                // Performance, wenn nichts aus der Datei angekommen ist, dann mach nichts
-                if (lines.length > 0) {
+                // Mittels for-schleife über alle Datenzeilen gehen
+                for (String line : lines) {
+                    // jeweils die aktuelle Datenzeile am Komma zerlegen um ein Array mit den einzelnen Elementen zu bekommen
+                    String[] elements = line.split(",");
 
-                    // Mittels for-schleife über alle Datenzeilen gehen
-                    for (int i = 0; i < lines.length; i++) {
-                        // jeweils die aktuelle Datenzeile am Komma zerlegen,
-                        // um ein Array mit den einzelnen Elementen zu bekommen
-                        String[] elements = lines[i].split(",");
+                    // Erzeugung einer Instanz der Klasse Student mit den gespeicherten Werte aus
+                    // dem Array elements, das mit der .split(",") erzeugt wurde
+                    StudentDTO lokStudent = new StudentDTO(elements[0].trim(), elements[1].trim(), elements[2].trim(), elements[3].trim());
 
-                        // Erzeugung einer Instanz der Klasse Student mit den gespeicherten Werte aus
-                        // dem Array elements, das mit der .split(",") erzeugt wurde
-                        StudentDTO lokStudent = new StudentDTO(elements[0], elements[1], elements[2], elements[3]);
+                    // Aufnaheme des Objekts Student (lokStudent) in die Liste
+                    studenten.add(lokStudent);
 
-                        // Aufnaheme des Objekts Student (lokStudent) in die Liste
-                        studenten.add(lokStudent);
-
-                        // Alternative
-                        // studenten.add(new StudentDTO(elements[0], elements[1], elements[2], elements[3]));
-                    }
+                    // Alternative
+                    // studenten.add(new StudentDTO(elements[0], elements[1], elements[2], elements[3]));
                 }
 
                 return studenten;
@@ -75,5 +68,5 @@ public class DataAccessObject {
         // Aufrufer zurück!
         // BEACHTE: Es kann mehrere returns gebe, ABER immer entweder oder erreichbar
         return null;
-    }
+    }    
 }

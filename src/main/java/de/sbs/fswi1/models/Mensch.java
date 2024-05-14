@@ -20,5 +20,5 @@ public abstract class Mensch {
 
     public String getGeburtsdatum() {
         return geburtsdatum;
-    }
+    } 
 }

@@ -1,6 +1,8 @@
 package de.sbs.fswi1;
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import de.sbs.fswi1.models.StudentDTO;
@@ -11,5 +13,9 @@ public class Main {
         // Pfad muss angepasst werden
         DataAccessObject dao = new DataAccessObject("C:\\Users\\cgg\\Documents\\data\\studenten.csv");
         List<StudentDTO> studenten = dao.findAll();
+
+        for (StudentDTO studentDTO : studenten) {
+            System.out.println(studentDTO);
+        }
     }
 }
