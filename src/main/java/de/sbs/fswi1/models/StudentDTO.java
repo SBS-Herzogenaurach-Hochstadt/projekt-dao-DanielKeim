@@ -9,7 +9,6 @@ public class StudentDTO extends Mensch {
         this.klasse = klasse;
     }
 
-    
     public String getKlasse() {
         return klasse;
     }

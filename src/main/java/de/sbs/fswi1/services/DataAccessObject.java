@@ -18,14 +18,12 @@ public class DataAccessObject {
 
     public List<StudentDTO> findAll() {
         // Zugriff auf eine gespeicherte Datei benötigt IMMER einen PATH
-        // Hier als relativer Pfad
         Path pfadAufCSV = Path.of(pathAsString);
 
-        // Wir machen nur etwas, wenn diw Datei wirklich existiert
+        // Wir machen nur etwas, wenn die Datei wirklich existiert
         if (Files.exists(pfadAufCSV)) {
 
-            // FehlerBEHANDLUNG, weil die Methode readString mehrer Exceptions wirft, wenn
-            // etwas nicht klappt
+            // FehlerBEHANDLUNG, weil die Methode readString mehrere Exceptions wirft, wenn etwas nicht klappt
             // Bei Zugriff auf das Dateiensystem fordert Java try - catch
             try {
                 // ALLES als Zeichenfolge einlesen
