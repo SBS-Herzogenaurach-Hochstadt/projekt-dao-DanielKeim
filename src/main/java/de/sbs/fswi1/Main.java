@@ -14,5 +14,14 @@ public class Main {
         for (StudentDTO studentDTO : studenten) {
             System.out.println(studentDTO);
         }
+
+        System.out.println(studenten.size());
+
+        if(dao.save(studenten.get(4))) {
+            studenten = dao.findAll();
+        }
+
+        System.out.println(studenten.size());
+
     }
 }
