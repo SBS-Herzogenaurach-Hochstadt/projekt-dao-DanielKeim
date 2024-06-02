@@ -1,8 +1,8 @@
 package de.sbs.fswi1.models;
 
 public class StudentDTO extends Mensch {
-    
-    private String klasse;
+
+    protected String klasse;
 
     public StudentDTO(String vorname, String nachname, String geburtsdatum, String klasse) {
         super(vorname, nachname, geburtsdatum);
@@ -11,11 +11,5 @@ public class StudentDTO extends Mensch {
 
     public String getKlasse() {
         return klasse;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentDTO [vorname=" + vorname + ", nachname=" + nachname + ", klasse=" + klasse + ", geburtsdatum="
-                + geburtsdatum + "]";
     }
 }
