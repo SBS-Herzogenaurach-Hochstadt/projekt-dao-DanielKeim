@@ -6,14 +6,13 @@
 
     <packaging>jar</packaging>
     <groupId>de.sbs.fswi1</groupId>
-    <artifactId>dao23</artifactId>
+    <artifactId>dao2324</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.targetEncoding>UTF-8</project.build.targetEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>1.21</maven.compiler.source>
+        <maven.compiler.target>1.21</maven.compiler.target>
     </properties>
 
 </project>
