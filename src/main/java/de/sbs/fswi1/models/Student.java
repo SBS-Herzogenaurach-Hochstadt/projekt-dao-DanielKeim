@@ -10,24 +10,18 @@ public class Student extends StudentDTO {
         super(vorname, nachname, geburtsdatum, klasse);
     }
 
-     public String getNachnameVorname() {
+    public String getNachnameVorname() {
         return String.format("%s, %s", nachname, vorname);
     }
 
     public int getAlterInJahrenZuHeute() {
-     
         // Das Format des Datums festlegen
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
         // String in ein LocalDate-Objekt umwandeln
         LocalDate bufGeburtsdatum = LocalDate.parse(geburtsdatum, formatter);
-
         // Das aktuelle Datum
         LocalDate heute = LocalDate.now();
-
-        // Das Alter berechnen
-        int alter = Period.between(bufGeburtsdatum, heute).getYears();
-
-        return alter;
+        // Das berechnete Alter zurückgeben
+        return Period.between(bufGeburtsdatum, heute).getYears();
     }
 }
