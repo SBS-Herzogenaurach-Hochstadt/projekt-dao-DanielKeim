@@ -3,6 +3,7 @@ package de.sbs.fswi1.models;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Student extends StudentDTO {
 
@@ -23,5 +24,37 @@ public class Student extends StudentDTO {
         LocalDate heute = LocalDate.now();
         // Das berechnete Alter zurückgeben
         return Period.between(bufGeburtsdatum, heute).getYears();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+
+        if (other == null) {
+            return false;
+        }
+
+        if (other == this) {
+            return true;
+        }
+ 
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Student otherStudent = (Student) other;
+
+        if (otherStudent.getVorname().equals(this.getVorname())
+                && otherStudent.getNachname().equals(this.getNachname())
+                && otherStudent.getGeburtsdatum().equals(this.getGeburtsdatum())
+                && otherStudent.getKlasse().equals(this.getKlasse())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vorname, nachname, geburtsdatum, klasse);
     }
 }

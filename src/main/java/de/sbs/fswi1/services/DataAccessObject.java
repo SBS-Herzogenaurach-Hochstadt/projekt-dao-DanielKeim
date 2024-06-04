@@ -2,6 +2,7 @@ package de.sbs.fswi1.services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +30,16 @@ public class DataAccessObject {
 		} catch (Exception ignored) {
 		}
 		return studenten;
+	}
+
+	public boolean save(StudentDTO student) {
+		Path pfadAufCSV = Path.of(pathAsString);
+		try {
+			String contentToWrite = String.format("%s,%s,%s,%s%n", student.getVorname(), student.getNachname(), student.getGeburtsdatum(), student.getKlasse());
+			Files.writeString(pfadAufCSV, contentToWrite, StandardOpenOption.APPEND);
+			return true;
+		} catch (Exception ignored) {			
+		}
+		return false;	
 	}
 }
