@@ -25,6 +25,32 @@ public abstract class Mensch {
     }
 
     @Override
+    public boolean equals(Object other) {
+
+        if (other == null) {
+            return false;
+        }
+
+        if (other == this) {
+            return true;
+        }
+ 
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Mensch otherStudent = (Mensch) other;
+
+        if (otherStudent.getVorname().equals(this.getVorname())
+                && otherStudent.getNachname().equals(this.getNachname())
+                && otherStudent.getGeburtsdatum().equals(this.getGeburtsdatum())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(vorname, nachname, geburtsdatum);
     }
