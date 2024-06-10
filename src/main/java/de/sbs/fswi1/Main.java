@@ -17,17 +17,9 @@ public class Main {
         }
         
         Student std1 = new Student("Peter", "Lustig", "12.12.2000", "FSWI-1");
-        Student std2 = new Student("Peter", "Lustig", "12.12.2000", "FSWI-2");
-        StudentDTO std3 = new StudentDTO("Peter", "Lustig", "12.12.2000", "FSWI-1");
-        StudentDTO std4 = new StudentDTO("Peter", "Lustiger", "12.12.2000", "FSWI-1");
-
-        // Aufruf der save-Methode, um die Werte des Studenten std4 in die Studenten.csv zu speichern 
-        dao.save(std4);
-
-        System.out.println(std1.hashCode());
+        Student std2 = new Student("Peter", "Lustig", "12.12.2000", "FSWI-1");
+       
         System.out.println(std2.hashCode());
-        System.out.println(std3.hashCode());
-        System.out.println(std4.hashCode());
-        System.out.println(std1.equals(std2));
+        System.out.println(((Object)std2).hashCode());
     }
 }

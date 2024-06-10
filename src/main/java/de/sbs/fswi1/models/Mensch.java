@@ -1,5 +1,7 @@
 package de.sbs.fswi1.models;
 
+import java.util.Objects;
+
 public abstract class Mensch {
     protected String vorname, nachname;
     protected final String geburtsdatum;
@@ -20,5 +22,10 @@ public abstract class Mensch {
 
     public String getGeburtsdatum() {
         return geburtsdatum;
-    } 
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vorname, nachname, geburtsdatum);
+    }
 }
