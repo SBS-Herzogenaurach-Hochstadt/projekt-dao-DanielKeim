@@ -2,8 +2,12 @@ package de.sbs.fswi1.models;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public abstract class Mensch {
     protected String vorname, nachname;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     protected final String geburtsdatum;
 
     public Mensch(String vorname, String nachname, String geburtsdatum) {

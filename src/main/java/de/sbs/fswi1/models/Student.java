@@ -6,16 +6,22 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Student extends StudentDTO {
 
     private Timestamp zeitstempel;
 
-    public Student(String vorname, String nachname, String geburtsdatum, String klasse) {
+    public Student(
+        @JsonProperty("vorname") String vorname,
+        @JsonProperty("nachname") String nachname,
+        @JsonProperty("geburtsdatum") @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy") String geburtsdatum,
+        @JsonProperty("klasse") String klasse) {
         super(vorname, nachname, geburtsdatum, klasse);
         zeitstempel = new Timestamp(System.nanoTime());
     }
 
-    
     public long getZeitstempel() {
         return zeitstempel.getTime();
     }
@@ -45,11 +51,11 @@ public class Student extends StudentDTO {
         if (other == this) {
             return true;
         }
- 
+
         if (other.getClass() != this.getClass()) {
             return false;
         }
-        
+
         Student otherStudent = (Student) other;
 
         if (otherStudent.getVorname().equals(this.getVorname())
