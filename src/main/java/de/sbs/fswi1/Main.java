@@ -14,7 +14,13 @@ import de.sbs.fswi1.services.DataAccessObject;
 
 @SuppressWarnings("unused")
 public class Main {
+
+    static DataAccessObject dao;
+
     public static void main(String[] args) {
+
+        // Pfad muss angepasst werden
+        // dao = new DataAccessObject("C:\\Users\\cgg\\Documents\\data\\studenten.csv");
 
         Path pfadAufCSV = Path.of("C:/Users/cgg/Documents/data/studenten.csv");
         try {
@@ -27,11 +33,7 @@ public class Main {
         } catch (Exception ignored) {
         }
 
-        
-         // Pfad muss angepasst werden
-         DataAccessObject dao = new
-         DataAccessObject("C:\\Users\\cgg\\Documents\\data\\studenten.csv");
-         /*
+        /*
          * List<StudentDTO> studenten = dao.findAll();
          * 
          * for (StudentDTO studentDTO : studenten) {
@@ -85,8 +87,14 @@ public class Main {
             e.printStackTrace();
         }
 
-
-        String json2 = mapper.writeValueAsString(d)
+        /*
+         * try {
+         * String json2 = mapper.writeValueAsString(dao.findAll());
+         * System.out.println(json2);
+         * } catch (Exception e) {
+         * e.printStackTrace();
+         * }
+         */
 
     }
 }
