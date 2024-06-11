@@ -2,17 +2,11 @@ package de.sbs.fswi1;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.sbs.fswi1.models.Student;
 import de.sbs.fswi1.models.StudentDTO;
 import de.sbs.fswi1.services.DataAccessObject;
 
-@SuppressWarnings("unused")
 public class Main {
     // Klassen-Scope
 
@@ -30,20 +24,6 @@ public class Main {
 
         createJsonAusListe();
     }
-    /*
-     * List<StudentDTO> studenten = dao.findAll();
-     * Pfad muss angepasst werden
-     * dao = new DataAccessObject("C:\\Users\\cgg\\Documents\\data\\studenten.csv");
-     * for (StudentDTO studentDTO : studenten) {
-     * System.out.println(studentDTO);
-     * }
-     * 
-     * Student std1 = new Student("Peter", "Lustig", "12.12.2000", "FSWI-1");
-     * Student std2 = new Student("Peter", "Lustig", "12.12.2000", "FSWI-1");
-     * 
-     * System.out.println(std2.hashCode());
-     * System.out.println(((Object)std2).hashCode());
-     */
 
     private static void createJsonAusListe() {
 
@@ -108,29 +88,5 @@ public class Main {
             Files.writeString(pfadAufJson, json.toString());
         } catch (Exception ignored) {
         }
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        try {
-            List<Student> studentenAusJson = mapper.readValue(json.toString(), new TypeReference<List<Student>>() {
-            });
-
-            // Print the mapped students
-            for (Student student : studentenAusJson) {
-                System.out.println(student.getZeitstempel());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        /*
-         * try {
-         * String json2 = mapper.writeValueAsString(dao.findAll());
-         * System.out.println(json2);
-         * } catch (Exception e) {
-         * e.printStackTrace();
-         * }
-         */
-
     }
 }
