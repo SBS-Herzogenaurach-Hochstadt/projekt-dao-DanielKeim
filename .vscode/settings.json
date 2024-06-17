@@ -4,5 +4,8 @@
         "java": false
     },
     "java.dependency.packagePresentation": "hierarchical",
+<<<<<<< HEAD
     "java.project.explorer.showNonJavaResources": false,
+=======
+>>>>>>> 0d2a51e (save code)
 }

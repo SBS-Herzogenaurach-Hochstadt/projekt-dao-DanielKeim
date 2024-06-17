@@ -3,8 +3,8 @@ package de.sbs.fswi1.models;
 import java.util.Objects;
 
 public abstract class Mensch {
-    protected String vorname, nachname;
-
+    protected String vorname;
+    protected String nachname;
     protected final String geburtsdatum;
 
     public Mensch(String vorname, String nachname, String geburtsdatum) {
@@ -24,35 +24,37 @@ public abstract class Mensch {
     public String getGeburtsdatum() {
         return geburtsdatum;
     }
-
     @Override
     public boolean equals(Object other) {
-
-        if (other == null) {
+        if (other == null)
             return false;
-        }
 
-        if (other == this) {
+        if (other == this)
             return true;
-        }
 
-        if (other.getClass() != this.getClass()) {
+        if (other.getClass() != this.getClass())
             return false;
-        }
 
         Mensch mensch = (Mensch) other;
 
-        if (mensch.getVorname().equals(this.getVorname())
-                && mensch.getNachname().equals(this.getNachname())
-                && mensch.getGeburtsdatum().equals(this.getGeburtsdatum())) {
+        if (mensch.nachname.equals(this.nachname))
             return true;
-        }
+
+
+
 
         return false;
+      
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(vorname, nachname, geburtsdatum);
+       
     }
+
+
+
+
+
 }

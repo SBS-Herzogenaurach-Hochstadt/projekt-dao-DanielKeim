@@ -1,6 +1,9 @@
 package de.sbs.fswi1.models;
 
+<<<<<<< HEAD
 import java.sql.Timestamp;
+=======
+>>>>>>> 0d2a51e (save code)
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -8,6 +11,7 @@ import java.util.Objects;
 
 public class Student extends StudentDTO {
 
+<<<<<<< HEAD
     private Timestamp zeitstempel;
 
     public Student(String vorname, String nachname, String geburtsdatum, String klasse) {
@@ -17,6 +21,10 @@ public class Student extends StudentDTO {
 
     public long getZeitstempel() {
         return zeitstempel.getTime();
+=======
+    public Student(String vorname, String nachname, String geburtsdatum, String klasse) {
+        super(vorname, nachname, geburtsdatum, klasse);
+>>>>>>> 0d2a51e (save code)
     }
 
     public String getNachnameVorname() {
@@ -44,11 +52,19 @@ public class Student extends StudentDTO {
         if (other == this) {
             return true;
         }
+<<<<<<< HEAD
 
         if (other.getClass() != this.getClass()) {
             return false;
         }
 
+=======
+ 
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+        
+>>>>>>> 0d2a51e (save code)
         Student otherStudent = (Student) other;
 
         if (otherStudent.getVorname().equals(this.getVorname())
@@ -65,4 +81,18 @@ public class Student extends StudentDTO {
     public int hashCode() {
         return Objects.hash(vorname, nachname, geburtsdatum, klasse);
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+
+
+
+    
+
+
+
+
+>>>>>>> 0d2a51e (save code)
