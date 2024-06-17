@@ -9,11 +9,13 @@ import de.sbs.fswi1.services.DataAccessObject;
 
 public class Main {
     // Klassen-Scope
+    private static String pfadAsString = "C:/Users/cgg/Documents/data/studenten.csv";
+    private static Path pfadAsPath = Path.of("C:/Users/cgg/Documents/data/studentenAusListe.json");
 
     public static void main(String[] args) {
         // main-Methoden-Scope
 
-        Path pfadAufCSV = Path.of("C:/Users/cgg/Documents/data/studenten.csv");
+        Path pfadAufCSV = Path.of(pfadAsString);
         try {
             String csvContent = Files.readString(pfadAufCSV);
             if (csvContent != null) {
@@ -29,7 +31,7 @@ public class Main {
 
         // im Kopf Schritte bestimmen, die nötig sind!!!!!!
         // Schritt 1: DAO erzeugen
-        DataAccessObject dao = new DataAccessObject("C:/Users/cgg/Documents/data/studenten.csv");
+        DataAccessObject dao = new DataAccessObject(pfadAsString);
 
         // Schrtitt 2: dao bnutzen, um List<Student>
         List<StudentDTO> liste = dao.findAll();
@@ -56,11 +58,7 @@ public class Main {
         }
         json.append("]");
 
-        try {
-            Path pfadAufJson = Path.of("C:/Users/cgg/Documents/data/studentenAusListe.json");
-            Files.writeString(pfadAufJson, json.toString());
-        } catch (Exception ignored) {
-        }
+        saveToFile(json);
     }
 
     private static void createJson(String csvContent) {
@@ -83,9 +81,12 @@ public class Main {
         }
         json.append("]");
 
+        saveToFile(json);
+    }
+
+    private static void saveToFile(StringBuilder json) {
         try {
-            Path pfadAufJson = Path.of("C:/Users/cgg/Documents/data/studenten.json");
-            Files.writeString(pfadAufJson, json.toString());
+            Files.writeString(pfadAsPath, json.toString());
         } catch (Exception ignored) {
         }
     }
